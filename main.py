@@ -44,6 +44,6 @@ class WhatsApp_Chat():
     # def graph_all_messages(self):
 
 if __name__ == '__main__':
-    chat = WhatsApp_Chat("WhatsApp Chat with Shreya CMR.txt")
+    chat = WhatsApp_Chat(input())
     print(len(chat))
     print(chat.count_occurance('ark'))
