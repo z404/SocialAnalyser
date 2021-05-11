@@ -15,8 +15,10 @@ class WhatsApp_Chat():
                 try:
                     message = {}
                     try:
-                        message['datetime'] = datetime.strptime(str(i.split(' - ')[0]), "%m/%d/%y, %I:%M %p")
-                        message['date'] = datetime.strptime(i.split(',')[0], "%m/%d/%y")
+                        # message['datetime'] = datetime.strptime(str(i.split(' - ')[0]), "%m/%d/%y, %I:%M %p")
+                        # message['date'] = datetime.strptime(i.split(',')[0], "%m/%d/%y")
+                        message['datetime'] = datetime.strptime(str(i.split(' - ')[0]), "%Y/%m/%d, %H:%M:%S")
+                        message['date'] = datetime.strptime(i.split(',')[0], "%Y/%m/%d")
                     except:
                         messages[-1]['message'] += '\n'+" ".join(i.split(' - ')[1].split(': ')[1:]).rstrip('\n')
                     message['sender'] = i.split(' - ')[1].split(':')[0]
@@ -61,4 +63,5 @@ class WhatsApp_Chat():
 if __name__ == '__main__':
     chat = WhatsApp_Chat(input())
     print(len(chat))
-    print(chat.graph_all_messages())
+    print(chat.get_participants())
+    print(chat.graph_all_messages(interval = 30))
