@@ -59,6 +59,6 @@ class WhatsApp_Chat():
         plt.show()
         
 if __name__ == '__main__':
-    chat = WhatsApp_Chat("WhatsApp Chat with Ananya VIT.txt")
+    chat = WhatsApp_Chat(input())
     print(len(chat))
     print(chat.graph_all_messages())
