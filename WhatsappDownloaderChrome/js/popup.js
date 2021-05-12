@@ -33,10 +33,9 @@ var download_chat = function(type) {
                     key: items.key,
                     inst_time: items.inst_time
                 }, (licenceData) => {
-                    if (licenceData.licenced) {
-                        // if (1) {
+                    if (true) {
 
-                        document.getElementById('info_lbl').innerHTML = 'Working';
+                        document.getElementById('info_lbl').innerHTML = '';
                         chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
 
                             chrome.tabs.sendMessage(tabs[0].id, {
@@ -49,7 +48,6 @@ var download_chat = function(type) {
                             document.getElementById('info_lbl').innerHTML = licenceData.error;
                         } else {
                             window.open(chrome.extension.getURL('buy.html'));
-
                         }
                     }
                 });
