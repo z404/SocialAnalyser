@@ -26,31 +26,28 @@ var download_chat = function(type) {
 
         }, function() {
 
-            chrome.storage.local.get(null, function(items) {
-                document.getElementById('info_lbl').innerHTML = 'Checking license status...';
-                chrome.runtime.sendMessage({
-                    cmd: 'checkLicence',
-                    key: items.key,
-                    inst_time: items.inst_time
-                }, (licenceData) => {
-                    if (true) {
+            // chrome.storage.local.get(null, function(items) {
+            //     document.getElementById('info_lbl').innerHTML = 'Checking license status...';
+            //     chrome.runtime.sendMessage({
+            //         cmd: 'checkLicence',
+            //         key: items.key,
+            //         inst_time: items.inst_time
+            //     }, (licenceData) => {
+            //         document.getElementById('info_lbl').innerHTML = '';
+            //         chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
 
-                        document.getElementById('info_lbl').innerHTML = '';
-                        chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-
-                            chrome.tabs.sendMessage(tabs[0].id, {
-                                key: "get_data"
-                            }, null);
-                        });
-
-                    } else {
-                        if (licenceData.error) {
-                            document.getElementById('info_lbl').innerHTML = licenceData.error;
-                        } else {
-                            window.open(chrome.extension.getURL('buy.html'));
-                        }
-                    }
-                });
+            //             chrome.tabs.sendMessage(tabs[0].id, {
+            //                 key: "get_data"
+            //             }, null);
+            //         });
+            //     });
+            // });
+            document.getElementById('info_lbl').innerHTML = '';
+            chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+                document.getElementById('info_lbl').innerHTML = 'Working';
+                chrome.tabs.sendMessage(tabs[0].id, {
+                    key: "get_data"
+                }, null);
             });
         });
     }
