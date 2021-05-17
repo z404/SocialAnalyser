@@ -16,8 +16,6 @@
     "content_scripts": [{
         "matches": ["https://web.whatsapp.com/*"],
         "js": [
-            "js/zip.js",
-            "js/z-worker.js",
             "js/patch-worker.js",
             "js/cs.js",
             "js/FileSaver.js",
