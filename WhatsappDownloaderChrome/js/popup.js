@@ -12,6 +12,8 @@ var download_chat = function(type) {
     const lastTStamp = new Date(interm_value.getFullYear(), interm_value.getMonth(), interm_value.getDate(), 0, 0, 0).getTime() / 1000;
     //const lastTStamp = new Date(interm_value2).getTime() / 1000;
 
+    console.log(firstTStamp, interm_value, lastTStamp);
+
     if (lastTStamp > 0) {
         chrome.storage.local.set({
             'firstDate': firstTStamp,
@@ -54,43 +56,43 @@ var download_chat = function(type) {
 };
 
 var select_type = function() {
-    if (document.getElementById("exportType").value === 'CSV (chat)') {
-        document.getElementById('media_cb').disabled = true;
-        document.getElementById('skip_cb').disabled = true;
-        document.getElementById('firstDate').disabled = false;
-        document.getElementById('lastDate').disabled = false;
-        document.getElementById('csv_settings').style = 'visibility:visible;';
-        document.getElementById('dark_cb').disabled = true;
-    }
+    // if (document.getElementById("exportType").value === 'CSV (chat)') {
+    //     document.getElementById('media_cb').disabled = true;
+    //     document.getElementById('skip_cb').disabled = true;
+    //     document.getElementById('firstDate').disabled = false;
+    //     document.getElementById('lastDate').disabled = false;
+    //     document.getElementById('csv_settings').style = 'visibility:visible;';
+    //     document.getElementById('dark_cb').disabled = true;
+    // }
 
 
-    if (document.getElementById("exportType").value === 'CSV (group participants)') {
-        document.getElementById('media_cb').disabled = true;
-        document.getElementById('skip_cb').disabled = true;
-        document.getElementById('firstDate').disabled = true;
-        document.getElementById('lastDate').disabled = true;
-        document.getElementById('csv_settings').style = 'visibility:visible;';
-        document.getElementById('dark_cb').disabled = true;
-    }
+    // if (document.getElementById("exportType").value === 'CSV (group participants)') {
+    //     document.getElementById('media_cb').disabled = true;
+    //     document.getElementById('skip_cb').disabled = true;
+    //     document.getElementById('firstDate').disabled = true;
+    //     document.getElementById('lastDate').disabled = true;
+    //     document.getElementById('csv_settings').style = 'visibility:visible;';
+    //     document.getElementById('dark_cb').disabled = true;
+    // }
 
-    if (document.getElementById("exportType").value === 'HTML') {
-        document.getElementById('media_cb').disabled = false;
-        document.getElementById('skip_cb').disabled = false;
-        document.getElementById('firstDate').disabled = false;
-        document.getElementById('lastDate').disabled = false;
-        document.getElementById('dark_cb').disabled = false;
-        document.getElementById('csv_settings').style = 'visibility: hidden;';
-    }
+    // if (document.getElementById("exportType").value === 'HTML') {
+    //     document.getElementById('media_cb').disabled = false;
+    //     document.getElementById('skip_cb').disabled = false;
+    //     document.getElementById('firstDate').disabled = false;
+    //     document.getElementById('lastDate').disabled = false;
+    //     document.getElementById('dark_cb').disabled = false;
+    //     document.getElementById('csv_settings').style = 'visibility: hidden;';
+    // }
 
-    if (document.getElementById("exportType").value === 'Text') {
-        document.getElementById('media_cb').disabled = true;
-        document.getElementById('skip_cb').disabled = true;
-        document.getElementById('firstDate').disabled = false;
-        document.getElementById('lastDate').disabled = false;
-        document.getElementById('csv_settings').style = 'visibility:hidden;';
-        document.getElementById('dark_cb').disabled = true;
+    // if (document.getElementById("exportType").value === 'Text') {
+    document.getElementById('media_cb').disabled = true;
+    document.getElementById('skip_cb').disabled = true;
+    document.getElementById('firstDate').disabled = false;
+    document.getElementById('lastDate').disabled = false;
+    document.getElementById('csv_settings').style = 'visibility:hidden;';
+    document.getElementById('dark_cb').disabled = true;
 
-    }
+    // }
 };
 
 var setUp = function() {
@@ -156,7 +158,7 @@ var setUp = function() {
         document.getElementById('skip_cb').disabled = !document.getElementById('media_cb').checked;
 
 
-        document.getElementById("exportType").value = (items.export_type ? items.export_type : 'HTML');
+        document.getElementById("exportType").value = (items.export_type ? items.export_type : 'Text');
         if (document.getElementById("exportType").value === 'CSV (chat)') {
             document.getElementById('media_cb').disabled = true;
             document.getElementById('dark_cb').disabled = true;
