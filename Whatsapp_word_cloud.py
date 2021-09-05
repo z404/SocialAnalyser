@@ -6,6 +6,7 @@ with open(input(), encoding="utf8") as file:
     text = text.replace("ommitted", "")
     text = text.replace("omitted", "")
     text = text.replace("PM", "")
+    text = text.replace("AM", "")
 wordcloud = WordCloud().generate(text)
 
 plt.imshow(wordcloud, interpolation='bilinear')
